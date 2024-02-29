@@ -1,0 +1,29 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+	"strconv"
+)
+
+func main() {
+
+	if len(os.Args) < 2 {
+		log.Fatalf("Usage: %s <number to check>", os.Args[0])
+	}
+
+	number, err := strconv.Atoi(os.Args[1])
+
+	if err != nil {
+		log.Fatalf("Can't parse: %s to number", os.Args[1])
+	}
+
+	fmt.Println("your number ", number)
+
+	if number == 0 {
+		fmt.Println("even")
+	} else if number == 1 {
+		fmt.Println("odd")
+	}
+}
