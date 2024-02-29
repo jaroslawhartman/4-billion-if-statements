@@ -68,7 +68,11 @@ bzz.go:250009:19: exceeded max nesting depth
 
 # Build
 
-If you wish to change supported range, change the nuber in the `Makefile`, then run it:
+If you wish to change supported range, change the nuber in the `Makefile`, then `make`.
+
+Compilation times on my MacStudio M1 / 32 GB:
+
+* `50000` range:
 
 ```shell
 % make
@@ -77,9 +81,16 @@ time go build cmd/oddeven/oddeven.go
      1003.71 real      1025.70 user        62.37 sys
 ```
 
-The above were results with `50000` range.
+* `75000` range;
 
-Failed with `100000`:
+```shell
+% make
+go run cmd/generator/generator.go 75000 > cmd/oddeven/oddeven.go
+time go build cmd/oddeven/oddeven.go
+     2405.62 real      2361.66 user       176.62 sys
+```
+
+* Failed with `100000`:
 
 ```shell
 go run cmd/generator/generator.go 100000 > cmd/oddeven/oddeven.go
@@ -88,9 +99,11 @@ command-line-arguments: /opt/homebrew/Cellar/go/1.21.6/libexec/pkg/tool/darwin_a
      5010.63 real      4809.05 user       331.20 sys
 ```
 
-# Modulo
+Not sure why - OOMemory?
 
-...then run it:
+# Execution
+
+Try your program:
 
 ```shell
 % ./oddeven 49999
